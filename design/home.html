@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>首页 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+/* v1.35 同步：整屏按 MainActivity.kt 的真实结构重写，不再借用 app.css 的 .hero/.row。
+   来源：顶栏 :670-703、剪贴板条目 :708-736、Hero :1284-1316、GroupHeader :1318-1348、ItemRow :1349-1440。
+   App 字号：26 / 13 / 96 / 14 / 18 / 13 / 13 / 32 / 11 / 16 / 12 / 10（共 10 种，见体检说明）。 */
+body{background:var(--paper)}
+.top{display:flex;align-items:center;justify-content:space-between;
+  padding:26px 22px 6px}
+.top .t1{font-size:26px;font-weight:700;color:var(--ink);line-height:1.2}
+.top .t2{font-size:13px;color:var(--ink-2);margin-top:2px}
+.top .ic{display:flex;gap:0}
+.top .ic a{padding:12px;color:var(--ink-2)}
+
+.wrap{padding:0 22px 130px}
+
+/* 剪贴板条目（App 只在有 clip 时出现） */
+.clip{padding:10px 0;border-bottom:1px solid var(--hair)}
+.clip .c1{font-size:12px;color:var(--ink-2)}
+.clip .c2{font-size:14px;color:var(--ink);margin-top:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clip .c3{font-size:12px;color:var(--ink-2);margin-top:4px}
+
+/* Hero：一个数字 + 标题 + 时间，底部一条线 */
+.hero{padding:18px 0}
+.hero .n{font-size:96px;line-height:96px;font-weight:700;color:var(--ink);
+  letter-spacing:-6px;font-variant-numeric:tabular-nums}
+.hero .nn{display:flex;align-items:flex-end;gap:8px}
+.hero .u{font-size:14px;color:var(--ink-2);padding-bottom:18px}
+.hero .tt{font-size:18px;color:var(--ink);margin-top:6px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero .dt{font-size:13px;color:var(--ink-2);margin-top:4px}
+.hero .ln{height:1px;background:var(--hair);margin-top:18px}
+
+/* 分组头 */
+.gh{display:flex;align-items:center;justify-content:space-between;min-height:48px;
+  padding:20px 0 8px}
+.gh .g1{font-size:13px;font-weight:600;color:var(--ink-2)}
+.gh .g2{font-size:12px;color:var(--ink-2)}
+.ghln{height:1px;background:var(--hair)}
+
+/* 列表行：天数 / 色点+分类 / 标题+时间，无箭头 */
+.it{display:flex;align-items:center;min-height:64px;padding:10px 0;
+  border-bottom:1px solid var(--hair)}
+.it .dcol{width:58px;flex:0 0 58px}
+.it .dn{font-size:32px;font-weight:700;color:var(--ink);
+  line-height:34px;letter-spacing:-2px;font-variant-numeric:tabular-nums}
+.it .du{font-size:11px;color:var(--ink-2);line-height:14px}
+.it .ct{width:28px;display:flex;flex-direction:column;align-items:center}
+.it .dot{width:8px;height:8px;border-radius:50%}
+.it .cn{font-size:10px;color:var(--ink-2);margin-top:4px}
+.it .body{flex:1;min-width:0;margin-left:10px}
+.it .ti{font-size:16px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it .wt{font-size:12px;color:var(--ink-2);margin-top:3px}
+.it.done .ti,.it.done .dn{color:var(--ink-2);text-decoration:line-through}
+
+.fab{position:fixed;right:22px;bottom:62px;width:56px;height:56px;border-radius:14px;
+  background:var(--ink);color:var(--paper);display:flex;align-items:center;
+  justify-content:center;font-size:26px;z-index:5;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="status">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="top">
+  <div>
+    <div class="t1">将至</div>
+    <div class="t2">8 件事 · 最近 3 天 2 项</div>
+  </div>
+  <div class="ic">
+    <a href="timetable.html" aria-label="打开课表">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M8,2h1.5v2H8zM14.5,2H16v2h-1.5zM3.5,4.5h17c0.83,0 1.5,0.67 1.5,1.5v14c0,0.83 -0.67,1.5 -1.5,1.5h-17C2.67,21.5 2,20.83 2,20V6c0,-0.83 0.67,-1.5 1.5,-1.5zM4,8v11.5h16V8H4zM6.5,11h3v3h-3zM10.5,11h3v3h-3zM14.5,11h3v3h-3zM6.5,15h3v3h-3zM10.5,15h3v3h-3z" fill="currentColor" fill-rule="evenodd"/></svg>
+    </a>
+    <a href="settings.html" aria-label="打开设置">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" fill="currentColor" fill-rule="evenodd"/></svg>
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="clip">
+    <div class="c1">刚复制了一段通知？</div>
+    <div class="c2">「高数作业 11.20 前提交」</div>
+    <div class="c3">点一下，记一件事 ›</div>
+  </div>
+
+  <div class="hero">
+    <div class="nn"><span class="n">3</span><span class="u">天后截止</span></div>
+    <div class="tt">高等数学期中考试</div>
+    <div class="dt">11月18日 周二 09:00</div>
+    <div class="ln"></div>
+  </div>
+
+  <div class="gh"><span class="g1">已逾期</span></div>
+  <div class="ghln"></div>
+  <div class="it">
+    <div class="dcol"><div class="dn">−2</div><div class="du">天</div></div>
+    <div class="ct"><span class="dot" style="background:var(--cat-exam)"></span><span class="cn">考试</span></div>
+    <div class="body"><div class="ti">英语六级报名</div><div class="wt">11月13日 周五 19:00</div></div>
+  </div>
+
+  <div class="gh"><span class="g1">今天</span></div>
+  <div class="ghln"></div>
+  <div class="it">
+    <div class="dcol"><div class="dn">0</div><div class="du">天</div></div>
+    <div class="ct"><span class="dot" style="background:var(--cat-work)"></span><span class="cn">作业</span></div>
+    <div class="body"><div class="ti">线性代数 第三章习题</div><div class="wt">11月18日 周二 19:00</div></div>
+  </div>
+
+  <div class="gh"><span class="g1">明天</span></div>
+  <div class="ghln"></div>
+  <div class="it">
+    <div class="dcol"><div class="dn">1</div><div class="du">天</div></div>
+    <div class="ct"><span class="dot" style="background:var(--cat-work)"></span><span class="cn">作业</span></div>
+    <div class="body"><div class="ti">数据结构实验报告</div><div class="wt">11月19日 周三 19:00</div></div>
+  </div>
+
+  <div class="gh"><span class="g1">本周</span></div>
+  <div class="ghln"></div>
+  <div class="it">
+    <div class="dcol"><div class="dn">3</div><div class="du">天</div></div>
+    <div class="ct"><span class="dot" style="background:var(--cat-contest)"></span><span class="cn">比赛</span></div>
+    <div class="body"><div class="ti">全国大学生物理竞赛报名</div><div class="wt">11月21日 周五 18:00</div></div>
+  </div>
+  <div class="it">
+    <div class="dcol"><div class="dn">4</div><div class="du">天</div></div>
+    <div class="ct"><span class="dot" style="background:var(--cat-event)"></span><span class="cn">活动</span></div>
+    <div class="body"><div class="ti">篮球队常规训练</div><div class="wt">11月22日 周六 19:30</div></div>
+  </div>
+
+  <div class="gh"><span class="g1">已完成</span><span class="g2">4 项 · 展开</span></div>
+  <div class="ghln"></div>
+
+</div>
+
+<a class="fab" href="add.html" aria-label="记一件事">+</a>
+
+<div class="demonav">
+  <a class="cur" href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a href="detail.html">详情</a>·
+  <a href="widget.html">组件</a>·
+  <a href="settings.html">设置</a>·
+  <a href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a href="empty.html">空态</a>
+</div>
+
+<div class="gesture"><i></i></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 墨色圆环：圆心 (54,54)，半径 24 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2B2B2B"
+        android:strokeWidth="6"
+        android:pathData="M54,30 A24,24 0 0,1 54,78 A24,24 0 0,1 54,30" />
+    <!-- 一根竖线：从环顶指向圆心，形如倒计时指针 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2B2B2B"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M54,32 L54,54" />
+</vector>

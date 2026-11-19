@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">将至</string>
+    <string name="widget_name">将至 · 最近截止</string>
+    <string name="widget_desc">在桌面看最近 3 个截止时间</string>
+</resources>

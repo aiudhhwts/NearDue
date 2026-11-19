@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>空状态 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+.ewrap{display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:40px 0 12px}
+.art{width:100%;text-align:center;margin-bottom:8px}
+.art .num{font-size:96px;line-height:96px;font-weight:700;letter-spacing:-6px;
+  color:var(--color-text);font-variant-numeric:tabular-nums}
+.ewrap h2{font-size:18px;font-weight:400;margin:0 0 6px;letter-spacing:0}
+.ewrap p{font-size:13px;color:var(--color-muted);line-height:1.7;margin:0 0 16px}
+.ewrap .btn{width:auto;padding:0 24px;border-radius:14px;font-size:14px;font-weight:500}
+.ewrap .endline{width:100%;height:1px;background:var(--color-line);margin-top:20px}
+.clip{margin-top:0!important;border-top:0!important;border-bottom:1px solid var(--color-line)!important;border-radius:0!important;background:transparent!important;padding:10px 0!important;max-width:none!important}
+.clip .cl{font-size:12px;color:var(--color-muted);font-weight:400}
+.clip .cb{font-size:14px;color:var(--color-text);margin:4px 0 0;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.clip .ca{font-size:12px;color:var(--color-muted);margin-top:4px}
+</style>
+<style>
+/* v1.35 同步：App 顶栏标题是 26px，副标题 13px（真实 sp 值），
+   设计稿原来统一 20px — 与实机对不上，这里按屏给出实际字号。 */
+.appbar .title{font-size:26px;font-weight:700}
+.appbar .sub{font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="status">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="appbar">
+  <div>
+    <div class="title">将至</div>
+    <div class="sub">0 件事 · 最近 3 天 0 项</div>
+  </div>
+  <div class="spacer"></div>
+  <a class="iconbtn" href="timetable.html" aria-label="课表">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8,2h1.5v2H8zM14.5,2H16v2h-1.5zM3.5,4.5h17c0.83,0 1.5,0.67 1.5,1.5v14c0,0.83 -0.67,1.5 -1.5,1.5h-17C2.67,21.5 2,20.83 2,20V6c0,-0.83 0.67,-1.5 1.5,-1.5zM4,8v11.5h16V8H4zM6.5,11h3v3h-3zM10.5,11h3v3h-3zM14.5,11h3v3h-3zM6.5,15h3v3h-3zM10.5,15h3v3h-3z" fill="currentColor" fill-rule="evenodd"/></svg>
+  </a>
+  <a class="iconbtn" href="settings.html" aria-label="设置">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" fill="currentColor" fill-rule="evenodd"/></svg>
+  </a>
+</div>
+
+<div class="content">
+
+  <div class="clip">
+    <div class="cl">刚复制了一段通知？</div>
+    <div class="cb">「高数作业 11.20 前提交」</div>
+    <div class="ca">点一下，记一件事 ›</div>
+  </div>
+
+  <div class="ewrap">
+    <div class="art"><span class="num">0</span></div>
+    <h2>现在，一件都不用惦记</h2>
+    <p>一句话，5 秒。<br>剩下的交给将至。</p>
+    <a class="btn" href="add.html">
+      <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      记第一件事
+    </a>
+    <div class="endline"></div>
+  </div>
+
+</div>
+
+<a class="fab" href="add.html" aria-label="记一件事">
+  <svg width="26" height="26" viewBox="0 0 26 26"><path d="M13 5v16M5 13h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+</a>
+
+<div class="demonav">
+  <a href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a href="detail.html">详情</a>·
+  <a href="widget.html">组件</a>·
+  <a href="settings.html">设置</a>·
+  <a href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a class="cur" href="empty.html">空态</a>
+</div>
+
+<div class="gesture"><i></i></div>
+</body>
+</html>

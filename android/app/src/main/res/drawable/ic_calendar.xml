@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 课表入口：日历轮廓 + 顶部两个挂环 + 中间日期点。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FF1B1A1F"
+        android:pathData="M8,2h1.5v2H8zM14.5,2H16v2h-1.5z" />
+    <path
+        android:fillColor="#FF1B1A1F"
+        android:fillType="evenOdd"
+        android:pathData="M3.5,4.5h17c0.83,0 1.5,0.67 1.5,1.5v14c0,0.83 -0.67,1.5 -1.5,1.5h-17C2.67,21.5 2,20.83 2,20V6c0,-0.83 0.67,-1.5 1.5,-1.5zM4,8v11.5h16V8H4z" />
+    <path
+        android:fillColor="#FF1B1A1F"
+        android:pathData="M6.5,11h3v3h-3zM10.5,11h3v3h-3zM14.5,11h3v3h-3zM6.5,15h3v3h-3zM10.5,15h3v3h-3z" />
+</vector>

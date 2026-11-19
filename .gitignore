@@ -1,0 +1,39 @@
+# ---- Android / Gradle ----
+android/build/
+android/app/build/
+android/.gradle/
+android/.kotlin/
+android/local.properties
+android/release.keystore
+*.jks
+*.keystore
+gradle-app.setting
+.gradle/
+build/
+captures/
+*.iml
+.idea/
+
+# ---- 产物 APK（走 GitHub Releases，不进仓库） ----
+*.apk
+*.apks
+*.idsig
+*.aab
+
+# ---- 本地快照 / 截图 / 临时 ----
+_backup/
+_shots/
+_tmp/
+_xls/
+
+# ---- 系统 ----
+.DS_Store
+Thumbs.db
+
+# ---- 本机开发辅助脚本（路径绑定本机，不入库） ----
+_*.mjs
+open-preview.mjs
+adb.mjs
+
+# ---- 内部开发文档（仅本地保留，不入公开仓库） ----
+_docs-private/

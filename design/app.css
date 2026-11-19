@@ -1,0 +1,154 @@
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{width:100%;background:var(--color-bg);color:var(--color-text);
+  font-family:var(--font-sans);-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+svg{display:block}
+
+/* 系统状态栏 */
+.status{height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;font-size:12px;font-weight:500;color:var(--color-muted)}
+.status .icons{display:flex;align-items:center;gap:6px}
+
+/* 顶栏 */
+.appbar{height:60px;flex:0 0 60px;display:flex;align-items:center;gap:10px;padding:0 22px}
+.appbar .title{font-size:20px;font-weight:700;letter-spacing:-.3px;line-height:1}
+.appbar .sub{font-size:12px;color:var(--color-muted);margin-top:4px;font-weight:400}
+.appbar .spacer{flex:1}
+.iconbtn{width:48px;height:48px;border-radius:var(--radius-full);display:flex;
+  align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:var(--color-text)}
+.iconbtn:hover{background:var(--color-surface-2)}
+
+.content{flex:1;overflow-y:auto;padding:0 22px 140px;scrollbar-width:none}
+.content::-webkit-scrollbar{display:none}
+
+/* 统计：只留一行极淡的字 */
+.summary{font-size:12px;color:var(--color-muted);margin:2px 0 18px;font-weight:400}
+.summary b{color:var(--color-text);font-weight:600}
+
+/* 最近截止：放大的一条，不是卡片 */
+.hero{padding:8px 0 22px;border-bottom:1px solid var(--color-line);margin-bottom:6px}
+.hero .stripe{display:none}
+.hero .kicker{font-size:10px;font-weight:600;color:var(--color-muted);letter-spacing:1.2px}
+.hero .kicker i{display:none}
+.hero .numrow{display:flex;align-items:baseline;gap:10px;margin:16px 0 4px}
+.hero .num{font-size:96px;line-height:1;font-weight:700;letter-spacing:-7px;font-variant-numeric:tabular-nums}
+.hero .unit{font-size:15px;font-weight:500;color:var(--color-muted)}
+.hero .h-title{font-size:17px;font-weight:600;margin-top:12px}
+.hero .h-date{font-size:12px;color:var(--color-muted);margin-top:5px;font-weight:400}
+.hero .bar{display:none}
+
+/* 分组 */
+.group{margin-bottom:18px}
+.group-head{display:flex;align-items:center;gap:9px;margin:20px 0 2px}
+.group-head .g-name{font-size:10px;font-weight:700;letter-spacing:1.4px;color:var(--color-muted)}
+.group-head .g-line{display:none}
+.group-head .g-count{display:none}
+.group.overdue .g-name{color:var(--color-danger)}
+.group.today .g-name{color:var(--color-text)}
+
+/* 列表行：一条细线，没有卡片 / 阴影 / 箭头 */
+.row{display:flex;align-items:center;gap:16px;min-height:64px;padding:11px 0;
+  border-bottom:1px solid var(--color-line)}
+.row .days{flex:0 0 46px;text-align:left;font-variant-numeric:tabular-nums}
+.row .days .d{font-size:30px;font-weight:700;line-height:1;letter-spacing:-2px}
+.row .days .u{font-size:10px;color:var(--color-muted);font-weight:400;display:block;margin-top:2px}
+.row .meta{flex:1;min-width:0}
+.row .cat{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;
+  letter-spacing:.6px;margin-bottom:4px}
+.row .cat i{width:6px;height:6px;border-radius:50%;display:block}
+.row .name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .when{font-size:12px;color:var(--color-muted);margin-top:3px;font-weight:400}
+.row .chev{display:none}
+.row.done{opacity:.4}
+.row.done .name{text-decoration:line-through}
+
+.c-exam{color:var(--cat-exam)} .c-work{color:var(--cat-work)}
+.c-contest{color:var(--cat-contest)} .c-event{color:var(--cat-event)} .c-other{color:var(--cat-other)}
+.bg-exam{background:var(--cat-exam)} .bg-work{background:var(--cat-work)}
+.bg-contest{background:var(--cat-contest)} .bg-event{background:var(--cat-event)} .bg-other{background:var(--cat-other)}
+
+.fold{display:flex;align-items:center;gap:8px;padding:16px 0;
+  border-top:1px solid var(--color-line);background:transparent;border-radius:0;
+  font-size:12px;font-weight:400;color:var(--color-muted)}
+.fold svg{display:none}
+
+/* 全 App 唯一主按钮 */
+.fab{position:fixed;right:22px;bottom:62px;width:52px;height:52px;border-radius:14px;
+  background:var(--color-primary);color:var(--color-primary-ink);display:flex;
+  align-items:center;justify-content:center;border:0;cursor:pointer;z-index:5}
+
+/* 预览导航（不属于产品 UI） */
+.demonav{position:fixed;left:0;right:0;bottom:30px;text-align:center;font-size:10px;
+  color:var(--color-muted);background:var(--paper);z-index:4;letter-spacing:.2px}
+.demonav a{margin:0 5px;padding:3px 1px;border-bottom:1px solid transparent}
+.demonav a.cur{color:inherit;font-weight:700;border-color:var(--color-primary)}
+
+.gesture{height:34px;flex:0 0 34px;display:flex;align-items:center;justify-content:center}
+.gesture i{width:108px;height:3px;border-radius:99px;background:var(--color-text);opacity:.2;display:block}
+
+/* 表单：输入只是一条下划线 */
+.field{border:0;border-bottom:1px solid var(--color-line);border-radius:0;
+  padding:10px 0 14px;margin-bottom:18px;background:transparent}
+.field .lbl{font-size:10px;font-weight:600;color:var(--color-muted);letter-spacing:1.2px;margin-bottom:8px}
+.biginput{width:100%;border:0;outline:0;background:transparent;font-size:20px;font-weight:500;
+  color:var(--color-text);font-family:inherit;padding:10px 0;min-height:44px}
+.biginput::placeholder{color:var(--color-muted);opacity:.5;font-weight:400}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:50px;
+  border:0;border-radius:10px;background:var(--color-primary);
+  color:var(--color-primary-ink);font-size:15px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--color-line);color:var(--color-text)}
+.btn.danger{background:transparent;color:var(--color-danger);border:0;font-size:13px;height:48px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 0;border:0;border-radius:0;
+  background:transparent;font-size:13px;font-weight:400;color:var(--color-muted);cursor:pointer}
+.chip.on{color:var(--color-text);font-weight:700;background:transparent;border:0}
+.chip i{width:7px;height:7px;border-radius:50%;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:18px}
+.hint{font-size:12px;color:var(--color-muted);line-height:1.6}
+.section-t{font-size:12px;font-weight:600;color:var(--color-muted);letter-spacing:0;margin:20px 0 6px}
+.preview-card{border:0;border-left:2px solid var(--color-success);border-radius:0;
+  background:transparent;padding:2px 0 2px 14px;margin:0 0 24px}
+.preview-card .p-lbl{font-size:10px;font-weight:600;color:var(--color-success);letter-spacing:1.2px}
+.preview-card .p-main{font-size:18px;font-weight:600;margin-top:6px;letter-spacing:-.3px}
+.preview-card .p-sub{font-size:12px;color:var(--color-muted);margin-top:4px}
+.setting-row{display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 0;
+  border-bottom:1px solid var(--color-line);background:transparent;border-radius:0;margin:0}
+.setting-row .s-ico{display:none}
+.setting-row .s-txt{flex:1}
+.setting-row .s-name{font-size:15px;font-weight:400}
+.setting-row .s-desc{font-size:12px;color:var(--color-muted);margin-top:2px}
+.setting-row .s-val{font-size:13px;color:var(--color-muted);font-weight:400}
+.switch{width:36px;height:20px;border-radius:99px;background:var(--color-primary);
+  position:relative;flex:0 0 36px}
+.switch i{position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--paper);display:block}
+.switch.off{background:var(--color-line)}
+.switch.off i{right:auto;left:2px}
+
+/* ── 极简覆盖层 ───────────────────────────────────────────────
+   各屏内联 <style> 在 app.css 之后加载，这里用 !important 把
+   文件内的渐变 / 毛玻璃 / 阴影 / 圆角卡片统一压平。
+   只改这一处，6 屏同时生效（预览热更新）。
+   白底墨字；唯一保留的彩色是 5 类标记点。                    */
+/* 录入：例句去卡片，只留一条细线 */
+.ex{background:transparent!important;border:0!important;border-bottom:1px solid var(--color-line)!important;border-radius:0!important;padding:9px 0!important}
+/* 详情：倒计时头部压平，保留底部细线 */
+.detail-hero{background:transparent!important;border:0!important;border-bottom:1px solid var(--color-line)!important;border-radius:0!important;box-shadow:none!important;padding:0 0 16px!important}
+/* 设置：引导条 / 隐私块变纯文字块，去掉图标 */
+.banner{background:transparent!important;border:0!important;border-bottom:1px solid var(--color-line)!important;box-shadow:none!important;border-radius:0!important;padding:0 0 14px!important}
+.banner .bi{display:none!important}
+.privacy{background:transparent!important;border:0!important;border-top:1px solid var(--color-line)!important;border-radius:0!important;padding:14px 0 0!important}
+/* 空状态：去掉叠层卡片 / 旋转 / 文字投影，只留大 0 和三个色点 */
+.art .sheet,.art .sheet2{display:none!important}
+.art .num{text-shadow:none!important}
+.clip{background:transparent!important;border:0!important;border-top:1px solid var(--color-line)!important;border-radius:0!important;padding:13px 0 0!important}
+/* 小组件：锁屏改纯墨底（无渐变），去掉毛玻璃 / 阴影 / 圆角；
+   白字保留 —— 那是锁屏上下文，不是装饰 */
+.lockscreen{background:#1B1A1F!important}
+.wcard{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:16px 0 8px!important}
+.wrow{border-top:1px solid rgba(255,255,255,.18)!important}
+.exambar{background:transparent!important;border:1px solid rgba(255,255,255,.28)!important;border-radius:0!important;box-shadow:none!important}
+.exambar .eb-ico{display:none!important}
+.note{background:transparent!important;border:0!important;border-top:1px solid rgba(255,255,255,.18)!important;border-radius:0!important;padding:12px 0 0!important}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>导入课程表 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+/* v1.35 同步：App 的导入是一个 AlertDialog（MainActivity.kt:2060-2210），
+   没有独立整屏、没有顶栏、没有底部说明。下面按对话框真实顺序与字号复刻。 */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.26);z-index:1}
+.dlg{position:absolute;left:20px;right:20px;top:40px;background:var(--paper);
+  border-radius:28px;padding:20px 20px 8px;z-index:2}
+.dlg-t{font-size:19px;font-weight:500;color:var(--color-text);margin-bottom:14px}
+.p1{font-size:12px;color:var(--color-muted);line-height:1.6;margin-bottom:10px}
+.term{display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.term span{font-size:12px;color:var(--color-text)}
+.term a{font-size:13px;color:var(--color-text);text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;min-width:52px;padding:0 10px}
+.pdfrow{display:flex;gap:4px;margin-top:2px}
+.pdfrow a{font-size:13px;color:var(--color-text);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px;padding:0 10px}
+.sub11{font-size:11px;color:var(--color-muted);line-height:1.6;margin:0 0 6px}
+.dest{display:flex;align-items:center;gap:8px;margin:6px 0}
+.dest i{font-style:normal;font-size:12px;color:var(--color-muted)}
+.dest a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;
+  border-radius:8px;border:1px solid var(--color-line);font-size:13px;
+  color:var(--color-text);text-decoration:none}
+.dest a.on{background:var(--color-text);border-color:var(--color-text);color:var(--color-bg)}
+.ta{width:100%;min-height:150px;border:1px solid var(--color-line);border-radius:4px;
+  background:transparent;color:var(--color-text);font-family:inherit;
+  font-size:14px;line-height:1.7;outline:0;resize:none;padding:10px;box-sizing:border-box;margin-top:8px}
+.sum{font-size:12px;color:var(--color-text);margin:8px 0 4px}
+.prev{font-size:11px;color:var(--color-muted);line-height:1.7;margin:0}
+.dact{display:flex;justify-content:flex-end;gap:4px;margin-top:10px}
+.dact span{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:14px}
+.dact .ok{font-weight:700;color:var(--color-text)}
+.dact .no{color:var(--color-muted)}
+</style>
+</head>
+<body>
+<div class="status">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="scrim"></div>
+
+<div class="dlg">
+  <div class="dlg-t">导入课程表</div>
+
+  <div class="p1">选教务导出的 PDF，自动把文字抽到下面，能再改；也可以直接粘整张表，或写「高数期末 12月14日」。<br>没写日期也没写周次的行跳过，不猜。</div>
+
+  <div class="term">
+    <span>第 1 周周一 11月16日</span>
+    <a href="settings.html">改 ›</a>
+  </div>
+
+  <div class="pdfrow">
+    <a href="course.html">选 PDF 课表…</a>
+    <a href="course.html">从剪贴板粘贴</a>
+  </div>
+  <div class="sub11">选教务系统导出的课表 PDF，会把里面的文字抽出来填到下面，你能再改。</div>
+
+  <div class="dest">
+    <i>导到哪里</i>
+    <a class="on" href="course.html">追加</a>
+    <a href="course.html">整表替换</a>
+  </div>
+  <div class="sub11">新课接在后面，重复的格子跳过；「整表替换」只换当前学期。</div>
+
+  <div class="p1" style="margin:8px 0 0">每行一件事 / 一门课</div>
+  <textarea class="ta" aria-label="课程表文本">周一 1-2节 走进生命科学 3,4,6-11周 A101
+周一 3-4节 体育Ⅱ 3,4,6-18周 操场
+周一 5-6节 高等数学甲I 3,4,6-18周 B201
+高数期末 12月14日 上午9点</textarea>
+
+  <div class="sum">课表 24 门 · 事项 0 件 · 跳过 0 行 · 去重 18 行</div>
+  <div class="prev">周一 1-2 节 走进生命科学 3,4,6-11 周<br>周一 3-4 节 体育Ⅱ 3,4,6-18 周<br>周一 5-6 节 高等数学甲I 3,4,6-18 周</div>
+
+  <div class="dact"><span class="no">取消</span><span class="ok">导入 24 项</span></div>
+</div>
+
+<div class="demonav">
+  <a href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a href="detail.html">详情</a>·
+  <a href="widget.html">组件</a>·
+  <a href="settings.html">设置</a>·
+  <a class="cur" href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a href="empty.html">空态</a>
+</div>
+
+<div class="gesture"><i></i></div>
+</body>
+</html>

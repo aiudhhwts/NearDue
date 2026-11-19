@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>设置 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+.banner{display:flex;gap:12px;background:var(--color-surface);border:1px solid var(--color-line);
+  border-left:4px solid var(--color-warning);border-radius:var(--radius-md);
+  padding:14px 16px;margin-bottom:22px;box-shadow:var(--shadow-sm)}
+.banner .bi{font-size:20px;flex:0 0 auto}
+.banner .bt{flex:1;font-size:14px;line-height:1.65;font-weight:700}
+.banner .bt small{display:block;color:var(--color-muted);font-weight:400;margin-top:3px;font-size:12px}
+.banner .ba{font-size:13px;font-weight:400;color:var(--color-text);align-self:center;white-space:nowrap;
+  display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.privacy{margin-top:18px;background:var(--color-surface-2);border-radius:var(--radius-md);
+  padding:14px 16px;font-size:12px;line-height:1.75;color:var(--color-muted)}
+.privacy b{color:var(--color-success);font-weight:800}
+.ver{text-align:center;font-size:12px;color:var(--color-muted);margin-top:20px}
+</style>
+<style>
+/* v1.35 同步：App 顶栏标题是 26px，副标题 13px（真实 sp 值），
+   设计稿原来统一 20px — 与实机对不上，这里按屏给出实际字号。 */
+.appbar .title{font-size:26px;font-weight:700}
+.appbar .sub{font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="status">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="appbar">
+  <a class="iconbtn" href="home.html" aria-label="返回">
+    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div>
+    <div class="title">设置</div>
+    <div class="sub">该有的都有，不堆设置</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="banner">
+    <span class="bi">🔔</span>
+    <span class="bt">让提醒准时响<small>国产 ROM 要给自启动 / 电池白名单放行</small></span>
+    <a class="ba" href="home.html">去系统设置 ›</a>
+  </div>
+
+  <div class="section-t">提醒</div>
+  <div class="setting-row">
+    <span class="s-ico">⏰</span>
+    <span class="s-txt"><span class="s-name">默认提醒时间</span><span class="s-desc">新建事项自动带上</span></span>
+    <span class="s-val">提前 1 天 + 2 小时</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🕖</span>
+    <span class="s-txt"><span class="s-name">默认截止时间</span><span class="s-desc">没写具体时刻时用它</span></span>
+    <span class="s-val">19:00</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">💤</span>
+    <span class="s-txt"><span class="s-name">免打扰时段</span><span class="s-desc">23:00 – 07:00 不响铃</span></span>
+    <span class="switch off"><i></i></span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🔔</span>
+    <span class="s-txt"><span class="s-name">发一条测试通知</span><span class="s-desc">立刻验证</span></span>
+    <span class="s-val">发送 ›</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">⏱</span>
+    <span class="s-txt"><span class="s-name">精确闹钟权限</span><span class="s-desc">国产 ROM 必开</span></span>
+    <span class="s-val">去设置 ›</span>
+  </div>
+
+  <div class="section-t">上课提醒</div>
+  <div class="setting-row">
+    <span class="s-ico">🏫</span>
+    <span class="s-txt"><span class="s-name">课前提醒</span><span class="s-desc">课表默认不响</span></span>
+    <span class="switch"><i></i></span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">⏳</span>
+    <span class="s-txt"><span class="s-name">提前多久</span><span class="s-desc">所有课共用</span></span>
+    <span class="s-val">提前 10 分钟 ›</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">📣</span>
+    <span class="s-txt"><span class="s-name">发一条上课提醒</span><span class="s-desc">预览通知</span></span>
+    <span class="s-val">发送 ›</span>
+  </div>
+
+  <div class="section-t">外观</div>
+  <div class="setting-row">
+    <span class="s-ico">🌙</span>
+    <span class="s-txt"><span class="s-name">深色模式</span><span class="s-desc">跟随系统</span></span>
+    <span class="s-val">跟随系统</span>
+  </div>
+
+  <div class="setting-row">
+    <span class="s-ico">📅</span>
+    <span class="s-txt"><span class="s-name">每周起始日</span><span class="s-desc">周一 / 周日</span></span>
+    <span class="switch"><i></i></span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🔢</span>
+    <span class="s-txt"><span class="s-name">课表只显示节次</span><span class="s-desc">不显示 8:00 这类时刻</span></span>
+    <span class="switch"><i></i></span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🏫</span>
+    <span class="s-txt"><span class="s-name">课表隐藏教室</span><span class="s-desc">只是不画，数据还在</span></span>
+    <span class="switch"><i></i></span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🔠</span>
+    <span class="s-txt"><span class="s-name">小组件字号</span><span class="s-desc">不影响课表</span></span>
+    <span class="s-val">中 ›</span>
+  </div>
+
+  <div class="section-t">数据</div>
+  <a class="setting-row" href="course.html">
+    <span class="s-ico">📄</span>
+    <span class="s-txt"><span class="s-name">从 PDF 导入课程表</span><span class="s-desc">教务导出的 PDF</span></span>
+    <span class="s-val">选文件 ›</span>
+  </a>
+  <div class="setting-row">
+    <span class="s-ico">📤</span>
+    <span class="s-txt"><span class="s-name">导出 / 导入</span><span class="s-desc">本地 JSON · 上次备份 3 天前</span></span>
+    <span class="s-val">导出 ›</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">📥</span>
+    <span class="s-txt"><span class="s-name">导入备份</span><span class="s-desc">恢复备份，不清空课表</span></span>
+    <span class="s-val">导入 ›</span>
+  </div>
+  <a class="setting-row" href="course.html">
+    <span class="s-ico">📚</span>
+    <span class="s-txt"><span class="s-name">导入课程表</span><span class="s-desc">粘贴文字，展开成每次课</span></span>
+    <span class="s-val">导入 ›</span>
+  </a>
+  <div class="setting-row">
+    <span class="s-ico">🗓</span>
+    <span class="s-txt"><span class="s-name">学期开学日</span><span class="s-desc">「第 1 周」从这天算</span></span>
+    <span class="s-val">9月7日 ›</span>
+  </div>
+  <div class="setting-row">
+    <span class="s-ico">🧭</span>
+    <span class="s-txt"><span class="s-name">学期</span><span class="s-desc">多个学期并存</span></span>
+    <span class="s-val">2026 秋季学期 · 共 2 个 ›</span>
+  </div>
+  <a class="setting-row" href="timetable.html">
+    <span class="s-ico">📅</span>
+    <span class="s-txt"><span class="s-name">上下课时间</span><span class="s-desc">每节起止时刻 · 各学期独立</span></span>
+    <span class="s-val">12 节 ›</span>
+  </a>
+  <a class="setting-row" href="timetable.html">
+    <span class="s-ico">📆</span>
+    <span class="s-txt"><span class="s-name">查看课表</span><span class="s-desc">按周看</span></span>
+    <span class="s-val">打开 ›</span>
+  </a>
+  <div class="setting-row">
+    <span class="s-ico">📋</span>
+    <span class="s-txt"><span class="s-name">剪贴板识别</span><span class="s-desc">回 App 时读一次</span></span>
+    <span class="switch"><i></i></span>
+  </div>
+<div class="privacy">
+    <b>无账号 · 无联网 · 无广告</b><br>
+    不申请 INTERNET 权限。数据只在本地，不上传、不分析、不推广告。
+  </div>
+
+  <div class="ver">将至 · v1.36</div>
+
+</div>
+
+<div class="demonav">
+  <a href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a href="detail.html">详情</a>·
+  <a href="widget.html">组件</a>·
+  <a class="cur" href="settings.html">设置</a>·
+  <a href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a href="empty.html">空态</a>
+</div>
+
+<div class="gesture"><i></i></div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>桌面小组件 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+/* v1.35 同步：App 的小组件（widget_near_due.xml）只有
+   ①"N 件事" 12sp ②可选"未来 7 天 · N 场考试/比赛" 12sp 琥珀 ③最多 3 行 "N天  标题" 14sp bold，
+   全部白字带 1px 投影、透明底。没有品牌行、没有"全部 ›"、没有底部说明——设计稿原来多画了。
+   屏幕背景只是模拟壁纸，让"透明底"看得出来。 */
+body{background:#1B1A1F!important}
+.lockscreen{background:linear-gradient(165deg,#2b3a55 0%,#4a5b7d 45%,#8a94ad 100%);
+  min-height:100%;padding:26px 18px;color:#fff}
+.clock{text-align:center;margin-top:6px}
+.clock .t{font-size:58px;font-weight:250;letter-spacing:-2px;line-height:1}
+.clock .d{font-size:14px;opacity:.85;margin-top:6px;font-weight:500}
+/* 小组件本体：真实是 4x2 的透明块，这里按 346 宽画 */
+.wg{margin-top:34px;padding:10px;text-align:left}
+.wg .c{font-size:12px;font-weight:400;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.wg .eb{font-size:12px;font-weight:700;color:#E8C36A;text-shadow:0 1px 3px rgba(0,0,0,.6);
+  margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wg .l{font-size:14px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);
+  margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note{margin-top:26px;background:rgba(255,255,255,.1);border-radius:12px;padding:12px 14px;
+  font-size:12px;line-height:1.7;opacity:.92}
+.note b{font-weight:800}
+</style>
+</head>
+<body>
+<div class="status" style="color:#fff">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="content lockscreen" style="padding-top:18px">
+  <div class="clock">
+    <div class="t">9:41</div>
+    <div class="d">11 月 18 日 周二</div>
+  </div>
+
+  <div class="wg">
+    <div class="c">3 件事</div>
+    <div class="eb">未来 7 天 · 2 场考试/比赛</div>
+    <div class="l">3天  高等数学期中考试</div>
+    <div class="l">0天  线性代数第三章习题</div>
+    <div class="l">1天  数据结构实验报告</div>
+  </div>
+
+  <div class="note">
+    <b>原生小组件</b>：透明底，只放最近 3 行；有考试/比赛时多一条聚合行。<br>
+    字号在 设置 → 外观 改。不进 App 也能扫一眼。
+  </div>
+</div>
+
+<div class="demonav" style="color:#fff;opacity:.7;background:#1B1A1F">
+  <a href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a href="detail.html">详情</a>·
+  <a class="cur" href="widget.html">组件</a>·
+  <a href="settings.html">设置</a>·
+  <a href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a href="empty.html">空态</a>
+</div>
+
+<div class="gesture" style="background:transparent"><i style="background:#fff;opacity:.6"></i></div>
+</body>
+</html>

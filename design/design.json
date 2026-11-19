@@ -1,0 +1,12 @@
+{
+  "screens": [
+    { "file": "home.html" },
+    { "file": "add.html" },
+    { "file": "detail.html" },
+    { "file": "timetable.html" },
+    { "file": "widget.html" },
+    { "file": "settings.html" },
+    { "file": "course.html" },
+    { "file": "empty.html" }
+  ]
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="dsh-design" content="app">
+<title>编辑 · 将至</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+<style>
+/* v1.35 同步：App 里编辑已存在的事项也是同一个 AlertDialog，
+   只是标题从「记一件事」变成「编辑」。这一屏画的是识别成功态。 */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.26);z-index:1}
+.dlg{position:absolute;left:24px;right:24px;top:112px;background:var(--paper);
+  border-radius:28px;padding:22px 22px 10px;z-index:2}
+.dlg-t{font-size:19px;font-weight:500;color:var(--color-text);margin-bottom:16px}
+.lbl{font-size:11px;color:var(--color-muted);margin-bottom:5px}
+.biginput{width:100%;border:0;border-bottom:1px solid var(--color-line);outline:0;
+  background:transparent;font-size:18px;font-weight:500;color:var(--color-text);
+  font-family:inherit;padding:8px 0;min-height:44px}
+.pv{display:flex;gap:10px;align-items:flex-start;margin:16px 0 2px}
+.pv .bar{flex:0 0 2px;width:2px;height:38px;background:var(--color-success)}
+.pv .p1{font-size:14px;font-weight:600;color:var(--color-text)}
+.pv .p2{font-size:11px;color:var(--color-muted);margin-top:2px}
+.dtr{display:flex;gap:6px;margin:12px 0 0}
+.tb{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;
+  font-size:14px;color:var(--color-text)}
+.dact{display:flex;justify-content:flex-end;gap:4px;margin-top:14px}
+.dact span{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:14px}
+.dact .ok{font-weight:700;color:var(--color-text)}
+.dact .no{color:var(--color-muted)}
+</style>
+</head>
+<body>
+<div class="status">
+  <span>9:41</span>
+  <span class="icons">
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M1 9h2v3H1zM5 6h2v6H5zM9 3h2v9H9zM13 0h2v12h-2z" fill="currentColor"/></svg>
+    <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 10.6a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.2 6.4a6.2 6.2 0 018.6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M1 4.1a9.4 9.4 0 0113 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    <svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" stroke="currentColor" fill="none"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor"/><rect x="21.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+  </span>
+</div>
+
+<div class="scrim"></div>
+
+<div class="dlg">
+  <div class="dlg-t">编辑</div>
+
+  <div class="lbl">做什么 · 一句话就行</div>
+  <input class="biginput" value="高数作业 11.20" aria-label="编辑内容">
+
+  <div class="pv">
+    <div class="bar"></div>
+    <div>
+      <div class="p1">11 月 20 日 19:00 · 作业 · 还剩 5 天</div>
+      <div class="p2">预览即确认 · 点下面的日期 / 时间可改</div>
+    </div>
+  </div>
+
+  <div class="dtr"><span class="tb">11月20日</span><span class="tb">19:00</span></div>
+
+  <div class="lbl" style="margin-top:10px">分类</div>
+  <div class="chips">
+    <span class="chip"><i class="bg-exam"></i>考试</span>
+    <span class="chip on"><i class="bg-work" style="background:#fff"></i>作业</span>
+    <span class="chip"><i class="bg-contest"></i>比赛</span>
+    <span class="chip"><i class="bg-event"></i>活动</span>
+    <span class="chip"><i class="bg-other"></i>其他</span>
+  </div>
+
+  <div class="hint" style="margin-top:8px;font-size:11px">一句话输入，如「高数作业 11.20」· 没写时刻默认 19:00 · 右滑完成 / 左滑删除</div>
+
+  <div class="dact"><span class="no">取消</span><span class="ok">保存</span></div>
+</div>
+
+<div class="demonav">
+  <a href="home.html">首页</a>·
+  <a href="add.html">录入</a>·
+  <a class="cur" href="detail.html">详情</a>·
+  <a href="widget.html">组件</a>·
+  <a href="settings.html">设置</a>·
+  <a href="course.html">课程表</a>·
+  <a href="timetable.html">课表</a>·
+  <a href="empty.html">空态</a>
+</div>
+
+<div class="gesture"><i></i></div>
+</body>
+</html>

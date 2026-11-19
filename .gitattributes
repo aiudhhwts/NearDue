@@ -1,0 +1,21 @@
+# 统一用 LF，避免 Windows / macOS / CI 之间行尾抖动
+* text=auto eol=lf
+
+*.kt    text eol=lf
+*.kts   text eol=lf
+*.xml   text eol=lf
+*.md    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.mjs   text eol=lf
+*.sh    text eol=lf
+
+# 二进制
+*.jar   binary
+*.pdf   binary
+*.jpg   binary
+*.png   binary
+*.keystore binary
+*.apk   binary

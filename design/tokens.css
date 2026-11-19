@@ -1,0 +1,63 @@
+/* 将至 / NearDue — 极简设计变量 v0.2
+   原则：纸底 + 墨字 + 一条细线。唯一允许的彩色是 5 类标记点。
+   没有卡片、阴影、渐变、进度条、装饰性图标。 */
+:root {
+  --paper: #FAFAFB;
+  --ink: #1A1B1E;
+  --ink-2: #6B6D75;
+  --hair: #E6E6EA;
+
+  --color-bg: var(--paper);
+  --color-surface: transparent;
+  --color-surface-2: #F0F0F3;
+  --color-text: var(--ink);
+  --color-muted: var(--ink-2);
+  --color-line: var(--hair);
+  --color-primary: var(--ink);
+  --color-primary-ink: var(--paper);
+  --color-accent: var(--ink);
+  --color-success: #1F7A4E;
+  --color-warning: #A9761C;
+  --color-danger: #C4382F;
+  /* v1.34：「没识别出日期」这类"要你动手"的提示。铁锈红而不是分类用的正红，
+     免得和「考试」色点撞；对纸底 6.20:1。 */
+  --color-warn-state: #A63A1E;
+
+  /* 五类标记：唯一的彩色，是信息不是装饰 */
+  --cat-exam: #C4382F;
+  --cat-work: #3E63DD;
+  --cat-contest: #A8530C;
+  --cat-event: #1F7A4E;
+  --cat-other: #6C6A72;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Microsoft YaHei", system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 12px; --text-sm: 14px; --text-md: 16px;
+  --text-lg: 20px; --text-xl: 24px; --text-2xl: 32px;
+  --text-3xl: 40px; --text-4xl: 56px;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px;
+  --radius-xl: 14px; --radius-full: 999px;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur: 120ms;
+}
+[data-theme="dark"] {
+  --paper: #151619; --ink: #F2F2F5; --ink-2: #999BA4; --hair: #32343B;
+  /* 暗底上「今天」那一列不能再用亮底的浅灰，否则白字压上去就糊了 */
+  --color-surface-2: #202127;
+  /* 亮色版为过 AA 调深了这些色，暗底上要换回亮色，否则对比度反而掉到 3.4:1 */
+  --color-success: #5CC492; --color-warning: #E0B25A; --color-danger: #E8706A;
+  --color-warn-state: #EE8F79;
+  --cat-exam: #E8706A; --cat-work: #7B96F0; --cat-contest: #F09A5C;
+  --cat-event: #5CC492; --cat-other: #9A97A2;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur: 0ms; } }
